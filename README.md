@@ -14,10 +14,9 @@ Let's record the history to be later able to trace back the reasons.
 
 (This is my first golang project. It's not the best, but it works ;-).)
 
-1. Edit startracker.go and change to your desired project
 1. `go get`
 1. `go build`
-1. `./startracker > data.txt`
+1. `./startracker <user> <repo> > data.txt`
 
 If you track the file `data.txt` with git on every invocation of startracker, you can record the full history.
 

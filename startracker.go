@@ -3,17 +3,25 @@ package main
 import "context"
 import "fmt"
 import "log"
+import "os"
 import "strconv"
 
 import "github.com/google/go-github/github"
-
-var u string = "dunst-project"
-var r string = "dunst"
 
 func main() {
 
 	gh := github.NewClient(nil)
 	ctx := context.Background()
+
+	var u string = ""
+	var r string = ""
+
+	if len(os.Args) > 2 {
+		u = os.Args[1]
+		r = os.Args[2]
+	} else if len(os.Args) > 0 {
+		log.Fatal("User and Repository name not specified!")
+	}
 
 	var opts = github.ListOptions {
 		Page: 0,
