@@ -28,7 +28,7 @@ func main() {
 		PerPage: 1000, /* This option is intended to just set the max of GitHub */
 	}
 
-	var maxPage int = 0
+	var maxPage int = 1
 
 	for opts.Page <= maxPage {
 
@@ -38,15 +38,19 @@ func main() {
 			log.Fatal(e)
 		}
 
-		maxPage = response.LastPage
-		opts.Page = response.NextPage
-
 		for _, star := range stars {
 			user := star.GetUser()
 			time := star.GetStarredAt()
 
 			fmt.Println(strconv.FormatInt(time.Time.Unix(), 10) + "\t" + user.GetLogin())
 		}
+
+		if opts.Page == maxPage {
+			break;
+		}
+
+		maxPage = response.LastPage
+		opts.Page = response.NextPage
 	}
 
 }
