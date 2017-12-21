@@ -36,6 +36,7 @@ func main() {
 
 		if e != nil {
 			log.Fatal(e)
+			os.Exit(1)
 		}
 
 		for _, star := range stars {
